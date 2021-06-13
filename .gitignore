@@ -1,0 +1,7 @@
+*.csv
+GPATH
+GRTAGS
+GTAGS
+__pycache__
+*.log
+*.db

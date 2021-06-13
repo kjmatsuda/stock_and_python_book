@@ -25,10 +25,13 @@ def download_stock_csv(code_range, save_dir):
         driver.get(url)
 
         try:
-            driver.find_element_by_css_selector('a.stocksCsvBtn').click()
+            # driver.find_element_by_css_selector('a.stocksCsvBtn').click()
+            driver.find_element_by_css_selector('a.To_QbbNE').click()
         except NoSuchElementException:
             pass
 
 if __name__ == '__main__':
     import os
-    download_stock_csv((7203, 9684), os.getcwd())
+    # download_stock_csv((7203, 9684), os.getcwd())
+g    download_stock_csv(range(7522,  9998), os.getcwd())
+    
