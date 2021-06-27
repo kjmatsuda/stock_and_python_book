@@ -28,13 +28,13 @@ def generate_from_csv_dir(csv_dir, generate_func):
             yield d
 
 
-def all_csv_file_to_db(db_file_name, csv_file_dir):
+def all_csv_file_to_prices(db_file_name, csv_file_dir):
     price_generator = generate_from_csv_dir(csv_file_dir,
                                             generate_price_from_csv_file)
     conn = sqlite3.connect(db_file_name)
     with conn:
         sql = """
-        INSERT INTO raw_prices(code,date,open,high,low,close,volume)
+        INSERT INTO prices(code,date,open,high,low,close,volume)
         VALUES(?,?,?,?,?,?,?)
         """
         conn.executemany(sql, price_generator)
