@@ -120,7 +120,7 @@ class Portfolio(object):
         profit = int((price - average_cost) * count - cost)
         self.total_profit += profit
 
-        # 源泉徴収額決定
+        # 源泉徴収額決定 (withholding の意味は源泉徴収)
         current_tax = calc_tax(self.total_profit)
         withholding = current_tax - self.total_tax
         self.total_tax = current_tax
@@ -222,6 +222,7 @@ class SellMarketOrder(Order):
         portfolio.sell_stock(self.code, self.count, price)
         self.logger("SELL", date, self.code, self.count, price, prev_deposit, portfolio.deposit)
 
+# TSE は Tokyo Stock Exchange (東京証券取引所)のこ
 def tse_date_range(start_date, end_date):
     tse_business_day = pd.offsets.CustomBusinessDay(
         calendar=japandas.TSEHolidayCalendar())
@@ -239,7 +240,7 @@ def simulate(start_date, end_date, deposit, trade_func,
     get_open_price_func:
         指定銘柄コードの指定日の始値を返す関数 (引数 date, code)
     get_close_price_func:
-        指定銘柄コードの指定日の始値を返す関数 (引数 date, code)
+        指定銘柄コードの指定日のを返す関数 (引数 date, code)
     """
 
     portfolio = Portfolio(deposit)

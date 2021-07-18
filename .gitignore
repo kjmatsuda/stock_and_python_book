@@ -5,3 +5,4 @@ GTAGS
 __pycache__
 *.log
 *.db
+.ipynb_checkpoints

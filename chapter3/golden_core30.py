@@ -45,6 +45,7 @@ def generate_cross_date_list(prices):
     # 日付のリストに変換
     golden_list = [x.date()
                    for x
+                   # golden_cross[golden_cross].index は golden_cross の中で True の要素の index を返す
                    in golden_cross[golden_cross].index.to_pydatetime()]
     dead_list = [x.date()
                  for x
@@ -58,7 +59,7 @@ def simulate_golden_dead_cross(db_file_name,
                                deposit,
                                order_under_limit):
     """deposit: 初期の所持金
-    　 order_order_under_limit: ゴールデンクロス時の最小購入金額 
+    　 order_under_limit: ゴールデンクロス時の最小購入金額 
     """
     
     stocks = create_stock_data(db_file_name, code_list, start_date, end_date)
