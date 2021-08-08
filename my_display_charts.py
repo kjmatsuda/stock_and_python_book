@@ -32,7 +32,7 @@ def my_display_charts(df, chart_type="default", render_to=None, **kwargs):
     """
     return html.format(content=content.format(chart_id=chart_id, data=json_data))
 
-def show_display_charts(df, chart_type="default"):
+def display_charts_browser(df, chart_type="default"):
     html_data = my_display_charts(df, chart_type, title="My Result", figsize=(1200, 800), grid=True)
     path = 'index.html'
 
