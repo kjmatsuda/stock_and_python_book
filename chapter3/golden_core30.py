@@ -84,14 +84,14 @@ def simulate_golden_dead_cross(db_file_name,
     def trade_func(date, portfolio):
         order_list = []
         # Dead crossが発生していて持っている株があれば売る
-        if date in dead_dict:
-            for code in dead_dict[date]:
+        if date.strftime('%Y-%m-%d') in dead_dict:
+            for code in dead_dict[date.strftime('%Y-%m-%d')]:
                 if code in portfolio.stocks:
                     order_list.append(
                         sim.SellMarketOrder(code,
                                             portfolio.stocks[code].current_count))
         # 保有していない株でgolden crossが発生していたら買う
-        if date in golden_dict:
+        if date.strftime('%Y-%m-%d') in golden_dict:
             for code in golden_dict[date.strftime('%Y-%m-%d')]:
                 if code not in portfolio.stocks:
                     order_list.append(
