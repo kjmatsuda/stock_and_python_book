@@ -8,10 +8,10 @@ def simulate_buy_and_hold(db_file_name, start_date, end_date, code, deposit):
                                start_date, end_date)
 
     def get_open_price_func(date, code):
-        return stocks[code]['prices']['open'][date]
+        return stocks[code]['prices']['open'][date.strftime('%Y-%m-%d')]
 
     def get_close_price_func(date, code):
-        return stocks[code]['prices']['close'][date]
+        return stocks[code]['prices']['close'][date.strftime('%Y-%m-%d')]
 
     def trade_func(date, portfolio):
         if date == start_date:

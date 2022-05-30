@@ -59,9 +59,9 @@ def simulate_golden_dead_cross(db_file_name,
                                deposit,
                                order_under_limit):
     """deposit: 初期の所持金
-    　 order_under_limit: ゴールデンクロス時の最小購入金額 
+    　 order_under_limit: ゴールデンクロス時の最小購入金額
     """
-    
+
     stocks = create_stock_data(db_file_name, code_list, start_date, end_date)
 
     # {ゴールデンクロス・デッドクロスが発生した日 : 発生した銘柄のリスト}
@@ -73,13 +73,13 @@ def simulate_golden_dead_cross(db_file_name,
         golden, dead = generate_cross_date_list(prices)
         for l, d in zip((golden, dead), (golden_dict, dead_dict)):
             for date in l:
-                d[date].append(code)
+                d[date.strftime('%Y-%m-%d')].append(code)
 
     def get_open_price_func(date, code):
-        return stocks[code]['prices']['open'][date]
+        return stocks[code]['prices']['open'][date.strftime('%Y-%m-%d')]
 
     def get_close_price_func(date, code):
-        return stocks[code]['prices']['close'][date]
+        return stocks[code]['prices']['close'][date.strftime('%Y-%m-%d')]
 
     def trade_func(date, portfolio):
         order_list = []
@@ -92,7 +92,7 @@ def simulate_golden_dead_cross(db_file_name,
                                             portfolio.stocks[code].current_count))
         # 保有していない株でgolden crossが発生していたら買う
         if date in golden_dict:
-            for code in golden_dict[date]:
+            for code in golden_dict[date.strftime('%Y-%m-%d')]:
                 if code not in portfolio.stocks:
                     order_list.append(
                         sim.BuyMarketOrderMoreThan(code,
@@ -104,5 +104,5 @@ def simulate_golden_dead_cross(db_file_name,
                         deposit,
                         trade_func,
                         get_open_price_func, get_close_price_func)
-                        
+
 

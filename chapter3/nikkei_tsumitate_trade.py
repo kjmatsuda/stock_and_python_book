@@ -9,16 +9,16 @@ def simulate_nikkei_tsumitate(db_file_name, start_date,
     stocks = create_stock_data(db_file_name, (code,),
                                start_date, end_date)
     def get_open_price_func(date, code):
-        return stocks[code]['prices']['open'][date]
+        return stocks[code]['prices']['open'][date.strftime('%Y-%m-%d')]
 
     def get_close_price_func(date, code):
-        return stocks[code]['prices']['close'][date]
+        return stocks[code]['prices']['close'][date.strftime('%Y-%m-%d')]
 
     current_month = start_date.month - 1
     def trade_func(date, portfolio):
         nonlocal  current_month
         if date.month != current_month:
-            # ŒŽ‰‚ß => “ü‹à => w“ü
+            # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ => ï¿½ï¿½ï¿½ï¿½ => ï¿½wï¿½ï¿½
             portfolio.add_deposit(reserve)
             current_month = date.month
             return [sim.BuyMarketOrderAsPossible(code,
