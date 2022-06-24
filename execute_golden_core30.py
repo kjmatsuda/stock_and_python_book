@@ -22,7 +22,7 @@ code_list = (
 8316, 8411, 8766, 8802, 9020, 9022, 9432, 9984)
 
 # test
-# test2, test3, test4
+# test2, test3, test4, test5, test6
 
 # 最初の所持金
 deposit = 1000000
