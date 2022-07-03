@@ -77,7 +77,7 @@ def calc_information_ratio(returns, benchmark_retruns):
 def calc_sortino_ratio(returns):
     """ソルティノレシオを計算して返す
     """
-    tdd = math.sqrt(returns.clip_upper(0).pow(2).sum() / returns.size)
+    tdd = math.sqrt(returns.clip(upper=0).pow(2).sum() / returns.size)
     return returns.mean() / tdd
 
 def calc_sortino_bench(returns, benchmark_retruns):

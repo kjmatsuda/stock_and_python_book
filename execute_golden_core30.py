@@ -42,5 +42,5 @@ portfolio, result = golden_core30.simulate_golden_dead_cross(
 print("max drawdown: %(max_drawdown)s" % {'max_drawdown': sim.calc_max_drawdown(result['price'])})
 print("sharp ratio: %(sharp_ratio)s" % {'sharp_ratio': sim.calc_sharp_ratio(result['profit'])})
 # print("information ratio: %(information_ratio)s" % {'information_ratio': calc_information_ratio(returns, benchmark_returns)})
-# print("sortino_ratio: %(sortino_ratio)s" % {'sortino_ratio': sim.calc_sortino_ratio(result['profit'])})
+print("sortino_ratio: %(sortino_ratio)s" % {'sortino_ratio': sim.calc_sortino_ratio(result['profit'])})
 print("calmar ratio: %(calmar_ratio)s" % {'calmar_ratio': sim.calc_calmar_ratio(result['price'], result['profit'])})
