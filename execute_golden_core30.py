@@ -2,6 +2,7 @@
 import chapter3.golden_core30 as golden_core30
 import datetime
 import os
+import chapter4_5.simulator as sim
 
 db_path = os.getcwd() + '/chapter2/stock.db'
 
@@ -21,6 +22,7 @@ code_list = (
 6954, 6981, 7201, 7203, 7267, 7751, 7974, 8031, 8058, 8306,
 8316, 8411, 8766, 8802, 9020, 9022, 9432, 9984)
 
+
 # test
 # test2, test3, test4, test5, test6
 
@@ -35,3 +37,10 @@ portfolio, result = golden_core30.simulate_golden_dead_cross(
     db_path, start_date, end_date,
     code_list, deposit, order_under_limit
 )
+
+# TODO 最終結果を出力
+print("max drawdown: %(max_drawdown)s" % {'max_drawdown': sim.calc_max_drawdown(result['price'])})
+print("sharp ratio: %(sharp_ratio)s" % {'sharp_ratio': sim.calc_sharp_ratio(result['profit'])})
+# print("information ratio: %(information_ratio)s" % {'information_ratio': calc_information_ratio(returns, benchmark_returns)})
+# print("sortino_ratio: %(sortino_ratio)s" % {'sortino_ratio': sim.calc_sortino_ratio(result['profit'])})
+print("calmar ratio: %(calmar_ratio)s" % {'calmar_ratio': sim.calc_calmar_ratio(result['price'], result['profit'])})
