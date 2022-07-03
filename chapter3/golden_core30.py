@@ -3,7 +3,9 @@ import sqlite3
 import datetime
 from collections import defaultdict
 import pandas as pd
-from . import simulator as sim
+import sys
+sys.path.append('../')
+from chapter4_5 import simulator as sim
 
 
 def create_stock_data(db_file_name, code_list, start_date, end_date):

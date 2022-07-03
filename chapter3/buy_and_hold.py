@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-from . import simulator as sim
+import sys
+sys.path.append('../')
+from chapter4_5 import simulator as sim
 from .golden_core30 import create_stock_data
 
 def simulate_buy_and_hold(db_file_name, start_date, end_date, code, deposit):

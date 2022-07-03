@@ -1,6 +1,8 @@
 import sqlite3
 from dateutil.relativedelta import relativedelta
-import simulator as sim
+import sys
+sys.path.append('../')
+from chapter4_5 import simulator as sim
 
 def simulate_rating_trade(db_file_name, start_date, 
                           end_date, deposit, reserve):
