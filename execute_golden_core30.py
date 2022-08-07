@@ -24,7 +24,7 @@ code_list = (
 
 
 # test
-# test2, test3, test4, test5, test6, test7
+# test2, test3, test4, test5, test6, test7, test8
 
 # 最初の所持金
 deposit = 1000000
