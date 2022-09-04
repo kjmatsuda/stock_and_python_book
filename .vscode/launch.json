@@ -8,7 +8,7 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "program": "execute_golden_core30.py",
+            "program": "execute_insert_to_raw_prices.py",
             "console": "integratedTerminal"
         }
     ]
